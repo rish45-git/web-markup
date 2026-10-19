@@ -1,0 +1,128 @@
+@font-face {
+    font-family: "SF Pro";
+    src: url("fonts/SF-Pro-Display-Regular.otf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "SF Pro";
+    src: url("fonts/SF-Pro-Display-Medium.otf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "SF Pro";
+    src: url("fonts/SF-Pro-Display-Semibold.otf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "SF Pro";
+    src: url("fonts/SF-Pro-Display-Bold.otf");
+    font-weight: 700;
+}
+
+body {
+    font-family: "SF Pro", sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+}
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+.logo::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.7),
+        transparent
+    );
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 25px;
+    padding: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: gray;
+}
+h1{
+    text-align: center;
+    font-weight: 400;
+    font-size: 24px;
+}
+h2{
+    text-align: center;
+}
+h4{
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+}
+p{
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+}
+.car-card {
+    position: relative;
+    width: 900px;
+    height: 300px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+.car-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.car-fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+
+    background: linear-gradient(
+        to right,
+        black 0%,
+        rgb(0, 0, 0) 30%,
+        rgba(0, 0, 0, 0.8) 55%,
+        transparent 100%
+    );
+
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+}
+
+.car-fade a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 600;
+}
