@@ -1,0 +1,173 @@
+/* AutoVault shared stylesheet. Mobile first: phone styles are the base, the PC block is at the bottom. */
+
+/* Google Font (imported here, not in the HTML head). Archivo has a width axis, so font-stretch gives the wide look of the design. */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap");
+
+/* Colors used everywhere */
+:root {
+	--gold: #c9a227;
+	--black: #000000;
+	--card: #252525;
+	--text: #f5f5f5;
+}
+
+/* Border-box makes widths easier to calculate */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background-color: var(--black);
+	color: var(--text);
+	font-family: "Archivo", Arial, sans-serif;
+	font-stretch: 125%;
+	font-size: 1rem;
+	line-height: 1.6;
+	word-spacing: 0.1em;
+}
+
+/* Heading scale: h1 > h2 > h3 */
+h1, h2, h3 {
+	margin: 0 0 0.5em;
+	color: var(--gold);
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+}
+
+h3 {
+	font-size: 1.125rem;
+}
+
+p {
+	margin: 0 0 1em;
+}
+
+/* Links: gold, with hover, visited and active states */
+a {
+	color: var(--gold);
+	text-decoration: none;
+}
+
+a:visited {
+	color: var(--gold);
+}
+
+a:hover {
+	color: var(--text);
+	text-decoration: underline;
+}
+
+a:active {
+	color: var(--text);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Header and menu: flexbox */
+header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem;
+	border-bottom: 2px solid var(--gold);
+}
+
+header img {
+	width: 3rem;
+}
+
+nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+nav a {
+	font-size: 0.875rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+main {
+	padding: 1rem;
+}
+
+/* Cards: dark boxes with rounded corners */
+article {
+	margin-bottom: 1.5rem;
+	padding: 1rem;
+	background-color: var(--card);
+	border-radius: 1.5rem;
+}
+
+figure {
+	margin: 0 0 1rem;
+}
+
+figcaption {
+	font-size: 0.875rem;
+}
+
+/* Footer: flexbox */
+footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1.5rem 1rem;
+	background-color: var(--card);
+	font-size: 0.875rem;
+}
+
+/* PC: wider than 768px */
+@media (min-width: 769px) {
+	header {
+		padding: 1.5rem 3rem;
+	}
+
+	header img {
+		width: 4rem;
+	}
+
+	nav ul {
+		gap: 2rem;
+	}
+
+	main {
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: 2rem 3rem;
+	}
+
+	h1 {
+		font-size: 3.5rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	footer {
+		padding: 2rem 3rem;
+	}
+}
