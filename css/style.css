@@ -235,3 +235,56 @@ main ol {
 		margin: 0;
 	}
 }
+
+/* Specs table on the detail pages: light stripes, gold first column */
+table {
+	width: 100%;
+	margin-bottom: 1rem;
+	border-collapse: collapse;
+	color: #000000;
+}
+
+th, td {
+	padding: 0.5rem;
+	border-width: 1px;
+	border-style: solid;
+	border-color: var(--gold);
+	text-align: left;
+}
+
+thead th {
+	background-color: var(--black);
+	color: var(--gold);
+}
+
+tbody th:first-child {
+	background-color: var(--gold);
+}
+
+tbody tr:nth-child(even) {
+	background-color: #ccffff;
+}
+
+tbody tr:nth-child(odd) {
+	background-color: #ffffff;
+}
+
+/* Detail page car card: photo next to the text on PC */
+@media (min-width: 769px) {
+	.car {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 2rem;
+		align-content: center;
+		padding: 2rem;
+	}
+
+	.car figure {
+		grid-row: 1 / span 6;
+		margin: 0;
+	}
+
+	.car > :not(figure) {
+		grid-column: 2;
+	}
+}
