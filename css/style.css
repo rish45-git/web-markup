@@ -262,11 +262,11 @@ tbody th:first-child {
 }
 
 tbody tr:nth-child(even) {
-	background-color: #ccffff;
+	background-color: #CFF;
 }
 
 tbody tr:nth-child(odd) {
-	background-color: #ffffff;
+	background-color: #FFF;
 }
 
 /* Detail page car card: photo next to the text on PC */
@@ -469,5 +469,37 @@ main > section:first-of-type figure img {
 
 	.car figure img, main ol figure img {
 		height: 24rem;
+	}
+}
+
+/* Drop cap: the first letter of an intro paragraph floats to the left */
+main > section > h2 + p::first-letter {
+	float: left;
+	padding-right: 0.5rem;
+	color: var(--gold);
+	font-size: 3rem;
+	line-height: 1;
+}
+
+/* Car description: first line is indented */
+.car > p:last-of-type {
+	text-indent: 1rem;
+}
+
+/* Selected link: keyboard focus is visible too */
+a:focus {
+	color: var(--text);
+	outline: 2px solid var(--gold);
+}
+
+/* Smartphone: 768px and smaller */
+@media (max-width: 768px) {
+	.button {
+		display: block;
+		text-align: center;
+	}
+
+	h3 {
+		letter-spacing: 0.02em;
 	}
 }
