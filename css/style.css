@@ -350,3 +350,56 @@ input[type="submit"]:hover {
 		gap: 3rem;
 	}
 }
+
+/* Hamburger menu without JavaScript: the hidden checkbox opens the menu on phones */
+header {
+	position: relative;
+}
+
+header input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+}
+
+header label {
+	width: auto;
+	margin: 0;
+	color: var(--gold);
+	font-size: 2rem;
+	cursor: pointer;
+}
+
+#menu-toggle:focus ~ label {
+	outline: 2px solid var(--gold);
+}
+
+nav {
+	display: none;
+	width: 100%;
+}
+
+#menu-toggle:checked ~ nav {
+	display: block;
+}
+
+nav ul {
+	flex-direction: column;
+}
+
+/* PC: the menu is always visible, in one row */
+@media (min-width: 769px) {
+	header label {
+		display: none;
+	}
+
+	nav {
+		display: block;
+		width: auto;
+	}
+
+	nav ul {
+		flex-direction: row;
+	}
+}
