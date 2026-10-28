@@ -403,3 +403,46 @@ nav ul {
 		flex-direction: row;
 	}
 }
+
+/* Cookie message: always on top of the page (z-index 9999), fixed to the bottom */
+#cookies {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 9999;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 100%;
+	padding: 1rem;
+	border-top: 2px solid var(--gold);
+	background-color: var(--card);
+	font-size: 0.875rem;
+}
+
+#cookies p {
+	margin: 0;
+}
+
+#cookies button {
+	padding: 0.5rem 1.25rem;
+	border: none;
+	border-radius: 2rem;
+	background-color: var(--gold);
+	font-family: inherit;
+	font-weight: 900;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+#cookies.hidden {
+	display: none;
+}
+
+/* Submit button after the form was sent: green */
+input[type="submit"].submitted {
+	background-color: #2e9e4f;
+	color: #ffffff;
+}
