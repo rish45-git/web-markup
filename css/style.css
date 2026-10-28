@@ -1,4 +1,4 @@
-/* AutoVault shared stylesheet. Mobile first: phone styles are the base, the PC block is at the bottom. */
+/* AutoVault shared stylesheet. Mobile first: phone styles come first, the PC styles are in one block at the bottom. */
 
 /* Google Font (imported here, not in the HTML head). Archivo has a width axis, so font-stretch gives the wide look of the design. */
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap");
@@ -52,14 +52,10 @@ p {
 	margin: 0 0 1em;
 }
 
-/* Links: gold, with hover, visited and active states */
+/* Links: gold, with hover, active and focus states */
 a {
 	color: var(--gold);
 	text-decoration: none;
-}
-
-a:visited {
-	color: var(--gold);
 }
 
 a:hover {
@@ -67,8 +63,9 @@ a:hover {
 	text-decoration: underline;
 }
 
-a:active {
+a:active, a:focus {
 	color: var(--text);
+	outline: 2px solid var(--gold);
 }
 
 img {
@@ -76,8 +73,9 @@ img {
 	height: auto;
 }
 
-/* Header and menu: flexbox */
+/* Header with logo, hamburger label and menu: flexbox */
 header {
+	position: relative;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -91,9 +89,38 @@ header img {
 	width: 3rem;
 }
 
+/* Hamburger menu without JavaScript: the hidden checkbox opens the menu on phones */
+header input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+}
+
+header label {
+	width: auto;
+	margin: 0;
+	color: var(--gold);
+	font-size: 2rem;
+	cursor: pointer;
+}
+
+#menu-toggle:focus ~ label {
+	outline: 2px solid var(--gold);
+}
+
+nav {
+	display: none;
+	width: 100%;
+}
+
+#menu-toggle:checked ~ nav {
+	display: block;
+}
+
 nav ul {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	gap: 1rem;
 	margin: 0;
 	padding: 0;
@@ -109,6 +136,10 @@ nav a {
 
 main {
 	padding: 1rem;
+}
+
+main > section {
+	margin-bottom: 2rem;
 }
 
 /* Cards: dark boxes with rounded corners */
@@ -127,54 +158,19 @@ figcaption {
 	font-size: 0.875rem;
 }
 
-/* Footer: flexbox */
-footer {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-between;
-	gap: 1rem;
-	padding: 1.5rem 1rem;
-	background-color: var(--card);
-	font-size: 0.875rem;
+/* Photos: cropped to the same height so tall photos do not take over the page */
+main > section:first-of-type figure img {
+	display: block;
+	width: 100%;
+	height: 20rem;
+	object-fit: cover;
 }
 
-/* PC: wider than 768px */
-@media (min-width: 769px) {
-	header {
-		padding: 1.5rem 3rem;
-	}
-
-	header img {
-		width: 4rem;
-	}
-
-	nav ul {
-		gap: 2rem;
-	}
-
-	main {
-		max-width: 90rem;
-		margin: 0 auto;
-		padding: 2rem 3rem;
-	}
-
-	h1 {
-		font-size: 3.5rem;
-	}
-
-	h2 {
-		font-size: 2rem;
-	}
-
-	footer {
-		padding: 2rem 3rem;
-	}
-}
-
-/* Home page and shared page parts */
-main > section {
-	margin-bottom: 2rem;
+.car figure img, main ol figure img {
+	width: 100%;
+	height: 15rem;
+	object-fit: cover;
+	border-radius: 1rem;
 }
 
 /* Link that looks like a gold outlined button */
@@ -188,7 +184,16 @@ main > section {
 	text-transform: uppercase;
 }
 
-/* Featuring: the spec box sits at the bottom of the section, on top of the picture */
+/* Drop cap: the first letter of an intro paragraph floats to the left */
+main > section > h2 + p::first-letter {
+	float: left;
+	padding-right: 0.5rem;
+	color: var(--gold);
+	font-size: 3rem;
+	line-height: 1;
+}
+
+/* Home page: the spec box sits at the bottom of the "Featuring" section, on top of the picture */
 .featured {
 	position: relative;
 }
@@ -212,31 +217,14 @@ main > section {
 	font-size: 0.75rem;
 }
 
-/* Collection list: one card per car type */
+/* Home page: the collection list has one card per car type */
 main ol {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }
 
-@media (min-width: 769px) {
-	/* On PC the photo sits next to the text */
-	main ol article {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 2rem;
-		align-items: center;
-		padding: 2rem;
-	}
-
-	main ol figure {
-		grid-column: 2;
-		grid-row: 1 / span 4;
-		margin: 0;
-	}
-}
-
-/* Specs table on the detail pages: light stripes, gold first column */
+/* Detail pages: specs table with light stripes and a gold first column */
 table {
 	width: 100%;
 	margin-bottom: 1rem;
@@ -269,27 +257,12 @@ tbody tr:nth-child(odd) {
 	background-color: #FFF;
 }
 
-/* Detail page car card: photo next to the text on PC */
-@media (min-width: 769px) {
-	.car {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		column-gap: 2rem;
-		align-content: center;
-		padding: 2rem;
-	}
-
-	.car figure {
-		grid-row: 1 / span 6;
-		margin: 0;
-	}
-
-	.car > :not(figure) {
-		grid-column: 2;
-	}
+/* Detail pages: the first line of the car description is indented */
+.car > p:last-of-type {
+	text-indent: 1rem;
 }
 
-/* Contact form */
+/* Contact page: form */
 fieldset {
 	margin: 0 0 1rem;
 	padding: 1rem;
@@ -327,8 +300,9 @@ input[type="text"], input[type="email"], select, textarea {
 	font-family: inherit;
 }
 
-input[type="submit"] {
-	padding: 0.75rem;
+/* Gold filled buttons: the Submit button and the cookie button */
+input[type="submit"], #cookies button {
+	padding: 0.75rem 1.25rem;
 	border: none;
 	border-radius: 2rem;
 	background-color: var(--gold);
@@ -342,66 +316,22 @@ input[type="submit"]:hover {
 	background-color: var(--text);
 }
 
-/* Support column next to the form on PC */
-@media (min-width: 769px) {
-	.contact {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 3rem;
-	}
+/* Submit button after the form was sent: green */
+input[type="submit"].submitted {
+	background-color: #2e9e4f;
+	color: #ffffff;
 }
 
-/* Hamburger menu without JavaScript: the hidden checkbox opens the menu on phones */
-header {
-	position: relative;
-}
-
-header input {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	opacity: 0;
-}
-
-header label {
-	width: auto;
-	margin: 0;
-	color: var(--gold);
-	font-size: 2rem;
-	cursor: pointer;
-}
-
-#menu-toggle:focus ~ label {
-	outline: 2px solid var(--gold);
-}
-
-nav {
-	display: none;
-	width: 100%;
-}
-
-#menu-toggle:checked ~ nav {
-	display: block;
-}
-
-nav ul {
-	flex-direction: column;
-}
-
-/* PC: the menu is always visible, in one row */
-@media (min-width: 769px) {
-	header label {
-		display: none;
-	}
-
-	nav {
-		display: block;
-		width: auto;
-	}
-
-	nav ul {
-		flex-direction: row;
-	}
+/* Footer: flexbox */
+footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1.5rem 1rem;
+	background-color: var(--card);
+	font-size: 0.875rem;
 }
 
 /* Cookie message: always on top of the page (z-index 9999), fixed to the bottom */
@@ -426,70 +356,8 @@ nav ul {
 	margin: 0;
 }
 
-#cookies button {
-	padding: 0.5rem 1.25rem;
-	border: none;
-	border-radius: 2rem;
-	background-color: var(--gold);
-	font-family: inherit;
-	font-weight: 900;
-	text-transform: uppercase;
-	cursor: pointer;
-}
-
 #cookies.hidden {
 	display: none;
-}
-
-/* Submit button after the form was sent: green */
-input[type="submit"].submitted {
-	background-color: #2e9e4f;
-	color: #ffffff;
-}
-
-/* Photo sizes: cropped to the same height so tall photos do not take over the page */
-main > section:first-of-type figure img {
-	display: block;
-	width: 100%;
-	height: 20rem;
-	object-fit: cover;
-}
-
-.car figure img, main ol figure img {
-	width: 100%;
-	height: 15rem;
-	object-fit: cover;
-	border-radius: 1rem;
-}
-
-@media (min-width: 769px) {
-	main > section:first-of-type figure img {
-		height: 40rem;
-	}
-
-	.car figure img, main ol figure img {
-		height: 24rem;
-	}
-}
-
-/* Drop cap: the first letter of an intro paragraph floats to the left */
-main > section > h2 + p::first-letter {
-	float: left;
-	padding-right: 0.5rem;
-	color: var(--gold);
-	font-size: 3rem;
-	line-height: 1;
-}
-
-/* Car description: first line is indented */
-.car > p:last-of-type {
-	text-indent: 1rem;
-}
-
-/* Selected link: keyboard focus is visible too */
-a:focus {
-	color: var(--text);
-	outline: 2px solid var(--gold);
 }
 
 /* Smartphone: 768px and smaller */
@@ -498,8 +366,95 @@ a:focus {
 		display: block;
 		text-align: center;
 	}
+}
 
-	h3 {
-		letter-spacing: 0.02em;
+/* PC: wider than 768px */
+@media (min-width: 769px) {
+	header {
+		padding: 1.5rem 3rem;
+	}
+
+	header img {
+		width: 4rem;
+	}
+
+	/* The menu is always visible, in one row */
+	header label {
+		display: none;
+	}
+
+	nav {
+		display: block;
+		width: auto;
+	}
+
+	nav ul {
+		flex-direction: row;
+		gap: 2rem;
+	}
+
+	main {
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: 2rem 3rem;
+	}
+
+	h1 {
+		font-size: 3.5rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	main > section:first-of-type figure img {
+		height: 40rem;
+	}
+
+	.car figure img, main ol figure img {
+		height: 24rem;
+	}
+
+	/* Cards: the photo sits next to the text */
+	main ol article {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+		align-items: center;
+		padding: 2rem;
+	}
+
+	main ol figure {
+		grid-column: 2;
+		grid-row: 1 / span 4;
+		margin: 0;
+	}
+
+	.car {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 2rem;
+		align-content: center;
+		padding: 2rem;
+	}
+
+	.car figure {
+		grid-row: 1 / span 6;
+		margin: 0;
+	}
+
+	.car > :not(figure) {
+		grid-column: 2;
+	}
+
+	/* Contact page: support column next to the form */
+	.contact {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+	}
+
+	footer {
+		padding: 2rem 3rem;
 	}
 }
