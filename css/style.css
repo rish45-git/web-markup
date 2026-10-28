@@ -446,3 +446,28 @@ input[type="submit"].submitted {
 	background-color: #2e9e4f;
 	color: #ffffff;
 }
+
+/* Photo sizes: cropped to the same height so tall photos do not take over the page */
+main > section:first-of-type figure img {
+	display: block;
+	width: 100%;
+	height: 20rem;
+	object-fit: cover;
+}
+
+.car figure img, main ol figure img {
+	width: 100%;
+	height: 15rem;
+	object-fit: cover;
+	border-radius: 1rem;
+}
+
+@media (min-width: 769px) {
+	main > section:first-of-type figure img {
+		height: 40rem;
+	}
+
+	.car figure img, main ol figure img {
+		height: 24rem;
+	}
+}
