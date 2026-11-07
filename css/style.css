@@ -1,0 +1,466 @@
+/* AutoVault shared stylesheet. Mobile first: phone styles come first, the PC styles are in one block at the bottom. */
+
+/* Google Font (imported here, not in the HTML head). Archivo has a width axis, so font-stretch gives the wide look of the design. */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap");
+
+/* Colors used everywhere */
+:root {
+	--gold: #c9a227;
+	--black: #000000;
+	--card: #252525;
+	--text: #f5f5f5;
+}
+
+/* Border-box makes widths easier to calculate */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background-color: var(--black);
+	color: var(--text);
+	font-family: "Archivo", Arial, sans-serif;
+	font-stretch: 125%;
+	font-size: 1rem;
+	line-height: 1.6;
+	word-spacing: 0.1em;
+}
+
+/* Heading scale: h1 > h2 > h3 */
+h1, h2, h3 {
+	margin: 0 0 0.5em;
+	color: var(--gold);
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+}
+
+h3 {
+	font-size: 1.125rem;
+}
+
+p {
+	margin: 0 0 1em;
+}
+
+/* Links: gold, with hover, active and focus states */
+a {
+	color: var(--gold);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--text);
+	text-decoration: underline;
+}
+
+a:active, a:focus {
+	color: var(--text);
+	outline: 2px solid var(--gold);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Header with logo, hamburger label and menu: flexbox */
+header {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem;
+	border-bottom: 2px solid var(--gold);
+}
+
+header img {
+	width: 3rem;
+}
+
+/* Hamburger menu without JavaScript: the hidden checkbox opens the menu on phones */
+header input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+}
+
+header label {
+	width: auto;
+	margin: 0;
+	color: var(--gold);
+	font-size: 2rem;
+	cursor: pointer;
+}
+
+#menu-toggle:focus ~ label {
+	outline: 2px solid var(--gold);
+}
+
+nav {
+	display: none;
+	width: 100%;
+}
+
+#menu-toggle:checked ~ nav {
+	display: block;
+}
+
+nav ul {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+nav a {
+	font-size: 0.875rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+main {
+	padding: 1rem;
+}
+
+main > section {
+	margin-bottom: 2rem;
+}
+
+/* Cards: dark boxes with rounded corners */
+article {
+	margin-bottom: 1.5rem;
+	padding: 1rem;
+	background-color: var(--card);
+	border-radius: 1.5rem;
+}
+
+figure {
+	margin: 0 0 1rem;
+}
+
+figcaption {
+	font-size: 0.875rem;
+}
+
+/* Photos: cropped to the same height so tall photos do not take over the page */
+main > section:first-of-type figure img {
+	display: block;
+	width: 100%;
+	height: 20rem;
+	object-fit: cover;
+	object-position: center 70%;
+}
+
+.car figure img, main ol figure img {
+	width: 100%;
+	height: 15rem;
+	object-fit: cover;
+	border-radius: 1rem;
+}
+
+/* Link that looks like a gold outlined button */
+.button {
+	display: inline-block;
+	padding: 0.5rem 1.25rem;
+	border: 1px solid var(--gold);
+	border-radius: 2rem;
+	font-size: 0.875rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+/* Drop cap: the first letter of an intro paragraph floats to the left */
+main > section > h2 + p::first-letter {
+	float: left;
+	padding-right: 0.5rem;
+	color: var(--gold);
+	font-size: 3rem;
+	line-height: 1;
+}
+
+/* Home page: the spec box sits at the bottom of the "Featuring" section, on top of the picture */
+.featured {
+	position: relative;
+}
+
+.featured aside {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 0.5rem 1rem;
+	background-color: var(--card);
+}
+
+.featured aside ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	font-size: 0.75rem;
+}
+
+/* Home page: the collection list has one card per car type */
+main ol {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+/* Detail pages: specs table with light stripes and a gold first column */
+table {
+	width: 100%;
+	margin-bottom: 1rem;
+	border-collapse: collapse;
+	color: #000000;
+}
+
+th, td {
+	padding: 0.5rem;
+	border-width: 1px;
+	border-style: solid;
+	border-color: var(--gold);
+	text-align: left;
+}
+
+thead th {
+	background-color: var(--black);
+	color: var(--gold);
+}
+
+tbody th:first-child {
+	background-color: var(--gold);
+}
+
+tbody tr:nth-child(even) {
+	background-color: #CFF;
+}
+
+tbody tr:nth-child(odd) {
+	background-color: #FFF;
+}
+
+/* Detail pages: the first line of the car description is indented */
+.car > p:last-of-type {
+	text-indent: 1rem;
+}
+
+/* Contact page: form */
+fieldset {
+	margin: 0 0 1rem;
+	padding: 1rem;
+	border-width: 1px;
+	border-style: solid;
+	border-color: var(--gold);
+	border-radius: 1rem;
+}
+
+legend {
+	padding: 0 0.5rem;
+	color: var(--gold);
+	text-transform: uppercase;
+}
+
+label, input, select, textarea {
+	display: block;
+	width: 100%;
+}
+
+label {
+	margin-bottom: 0.25rem;
+	font-size: 0.875rem;
+}
+
+input[type="text"], input[type="email"], select, textarea {
+	margin-bottom: 1rem;
+	padding: 0.5rem;
+	border-width: 1px;
+	border-style: solid;
+	border-color: var(--gold);
+	border-radius: 0.5rem;
+	background-color: var(--card);
+	color: var(--text);
+	font-family: inherit;
+}
+
+/* Gold filled buttons: the Submit button and the cookie button */
+input[type="submit"], #cookies button {
+	padding: 0.75rem 1.25rem;
+	border: none;
+	border-radius: 2rem;
+	background-color: var(--gold);
+	font-family: inherit;
+	font-weight: 900;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: var(--text);
+}
+
+/* Submit button after the form was sent: green */
+input[type="submit"].submitted {
+	background-color: #2e9e4f;
+	color: #ffffff;
+}
+
+/* Footer: flexbox */
+footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1.5rem 1rem;
+	background-color: var(--card);
+	font-size: 0.875rem;
+}
+
+/* Cookie message: always on top of the page (z-index 9999), fixed to the bottom */
+#cookies {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 9999;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 100%;
+	padding: 1rem;
+	border-top: 2px solid var(--gold);
+	background-color: var(--card);
+	font-size: 0.875rem;
+}
+
+#cookies p {
+	margin: 0;
+}
+
+#cookies.hidden {
+	display: none;
+}
+
+/* Smartphone: 768px and smaller */
+@media (max-width: 768px) {
+	.button {
+		display: block;
+		text-align: center;
+	}
+}
+
+/* PC: wider than 768px */
+@media (min-width: 769px) {
+	header {
+		padding: 1.5rem 3rem;
+	}
+
+	header img {
+		width: 4rem;
+	}
+
+	/* The menu is always visible, in one row */
+	header label {
+		display: none;
+	}
+
+	nav {
+		display: block;
+		width: auto;
+	}
+
+	nav ul {
+		flex-direction: row;
+		gap: 2rem;
+	}
+
+	main {
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: 2rem 3rem;
+	}
+
+	h1 {
+		font-size: 3.5rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	main > section:first-of-type figure img {
+		height: 40rem;
+	}
+
+	.car figure img, main ol figure img {
+		height: 24rem;
+	}
+
+	/* Cards: the photo sits next to the text */
+	main ol article {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+		align-items: center;
+		padding: 2rem;
+	}
+
+	main ol figure {
+		grid-column: 2;
+		grid-row: 1 / span 4;
+		margin: 0;
+	}
+
+	.car {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 2rem;
+		align-content: center;
+		padding: 2rem;
+	}
+
+	.car figure {
+		grid-row: 1 / span 6;
+		margin: 0;
+	}
+
+	.car > :not(figure) {
+		grid-column: 2;
+	}
+
+	/* Contact page: support column next to the form, heading above both */
+	.contact {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+	}
+
+	.contact h2 {
+		grid-column: 1 / -1;
+		margin: 0;
+	}
+
+	footer {
+		padding: 2rem 3rem;
+	}
+}

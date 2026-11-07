@@ -1,0 +1,5 @@
+Student name: Rishi Anoop
+Student number: 758031
+Student class: IT1B
+GitHub Repository: https://github.com/rish45-git/web-markup
+GitHub Pages URL: https://rish45-git.github.io/web-markup/

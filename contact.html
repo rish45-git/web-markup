@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Rishi Anoop">
+	<meta name="description" content="Contact the AutoVault team with a question, feedback or a business inquiry. We reply to every message within 24 hours.">
+	<meta name="keywords" content="contact AutoVault, car questions, customer support, help center, business inquiries">
+	<title>Contact us | AutoVault</title>
+	<link rel="icon" type="image/png" href="img/logo.png">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<header>
+		<a href="index.html"><img src="img/logo.png" alt="AutoVault logo" title="AutoVault logo"></a>
+		<input type="checkbox" id="menu-toggle">
+		<label for="menu-toggle" title="Menu">&#9776;</label>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="detail-1.html">Classic</a></li>
+				<li><a href="detail-2.html">Budget</a></li>
+				<li><a href="detail-3.html">Sport</a></li>
+				<li><a href="detail-4.html">Hyper</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<h1>Contact us</h1>
+
+		<section class="contact">
+			<h2>Contact our team</h2>
+			<article>
+				<h3>Send us a message</h3>
+				<p>We'd love to hear from you. Whether you have a question, feedback, or want to work with us, fill out the form below and our team will get back to you as soon as possible.</p>
+				<form action="http://next-app-router-playground-kohl.vercel.app/api/contact" method="POST">
+					<fieldset>
+						<legend>Your details</legend>
+
+						<label for="first-name">First name</label>
+						<input type="text" id="first-name" name="name" placeholder="Your first name" required>
+
+						<label for="last-name">Last name</label>
+						<input type="text" id="last-name" name="lastname" placeholder="Your last name" required>
+
+						<label for="email">Email address</label>
+						<input type="email" id="email" name="email" placeholder="name@company.com" required>
+
+						<label for="message">Message</label>
+						<textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+
+						<label for="country">Country</label>
+						<select id="country" name="country">
+							<option value="" selected disabled>Select your country</option>
+							<option value="nl">Netherlands</option>
+							<option value="be">Belgium</option>
+							<option value="de">Germany</option>
+							<option value="fr">France</option>
+							<option value="uk">United Kingdom</option>
+							<option value="us">United States</option>
+							<option value="other">Other</option>
+						</select>
+
+						<input type="submit" value="Submit">
+					</fieldset>
+				</form>
+				<p>Tell us which car or collection your question is about. After you send the form, the button confirms it was submitted and our team replies within 24 hours.</p>
+			</article>
+
+			<aside>
+				<h3>Product and account support</h3>
+				<p>If you have questions about our website, car information, accounts or anything else, check our help center for quick answers.</p>
+				<p><a href="mailto:support@autovault.com">Visit the help center &rarr;</a></p>
+
+				<h3>Call us</h3>
+				<p>We can be reached at <a href="tel:+31201234567">+31 20 123 4567</a> Monday through Friday, 9:00 a.m. to 6:00 p.m. CET (excluding holidays).</p>
+
+				<h3>Email us</h3>
+				<p><a href="mailto:support@autovault.com">support@autovault.com</a>. We typically respond within 24 hours.</p>
+				<p><strong>Business inquiries:</strong> for partnerships, media or other business inquiries, please contact <a href="mailto:business@autovault.com">business@autovault.com</a>.</p>
+			</aside>
+		</section>
+
+		<figure>
+			<img src="img/contact-banner.jpg" alt="Red Ferrari race car with number 20 in a dark studio" title="Red Ferrari race car">
+			<figcaption>Questions about a car? Ask us.</figcaption>
+		</figure>
+	</main>
+
+	<footer>
+		<p>&copy; 2026 AutoVault&trade;. All rights reserved.</p>
+		<p><a href="mailto:support@autovault.com">support@autovault.com</a> <a href="tel:+31201234567">+31 20 123 4567</a></p>
+	</footer>
+	<aside id="cookies">
+		<p>AutoVault uses cookies to make the website work better. By staying on this site you accept them.</p>
+		<button type="button" id="cookie-accept">Accept</button>
+	</aside>
+	<script src="js/script.js"></script>
+</body>
+</html>
